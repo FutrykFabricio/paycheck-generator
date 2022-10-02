@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/paycheck-generator/static/css/main.3b0217de.css",
+    "main.js": "/paycheck-generator/static/js/main.5811d2b4.js",
+    "index.html": "/paycheck-generator/index.html",
+    "main.3b0217de.css.map": "/paycheck-generator/static/css/main.3b0217de.css.map",
+    "main.5811d2b4.js.map": "/paycheck-generator/static/js/main.5811d2b4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3b0217de.css",
+    "static/js/main.5811d2b4.js"
+  ]
+}
