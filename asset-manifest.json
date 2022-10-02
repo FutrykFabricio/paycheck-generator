@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/paycheck-generator/static/css/main.3b0217de.css",
-    "main.js": "/paycheck-generator/static/js/main.5811d2b4.js",
+    "main.css": "/paycheck-generator/static/css/main.7120cf17.css",
+    "main.js": "/paycheck-generator/static/js/main.48a7e538.js",
     "index.html": "/paycheck-generator/index.html",
-    "main.3b0217de.css.map": "/paycheck-generator/static/css/main.3b0217de.css.map",
-    "main.5811d2b4.js.map": "/paycheck-generator/static/js/main.5811d2b4.js.map"
+    "main.7120cf17.css.map": "/paycheck-generator/static/css/main.7120cf17.css.map",
+    "main.48a7e538.js.map": "/paycheck-generator/static/js/main.48a7e538.js.map"
   },
   "entrypoints": [
-    "static/css/main.3b0217de.css",
-    "static/js/main.5811d2b4.js"
+    "static/css/main.7120cf17.css",
+    "static/js/main.48a7e538.js"
   ]
 }
