@@ -17,7 +17,15 @@ import calculate from "../utils/calculate";
 export const PaycheckContext = createContext<IPaycheckContext | null>(null);
 
 const PaycheckProvider: FC<PropsWithChildren> = ({ children }) => {
-  const { form: dataForm, onChange: onDataChange } = useForm<IDataForm>();
+  const { form: dataForm, onChange: onDataChange } = useForm<IDataForm>({
+    category: "VACÍO",
+    cuil: "VACÍO",
+    departament: "VACÍO",
+    division: "VACÍO",
+    file: 0,
+    names: "VACÍO",
+    surnames: "VACÍO",
+  });
   const { form: paymentForm, onChange: onPaymentChange } =
     useForm<IPaymentForm>({
       extraFull: 0,
