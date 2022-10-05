@@ -44,7 +44,7 @@ const Table = () => {
       <TableRow>
         <TableColumn className="w-8/12">
           <ColumnHeader>
-            <p>Apellidos y Nombres"</p>
+            <p>Apellidos y Nombres</p>
           </ColumnHeader>
           <ColumnContent>
             <p>{`${dataForm.surnames} ${dataForm.names}`}</p>
