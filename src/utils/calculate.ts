@@ -11,7 +11,7 @@ import { IPaycheckContext } from "../interfaces/IPaycheckContext";
 
 const calculate = (context: IPaycheckContext) => {
   const today = new Date();
-  let wage = parseInt(context.get.paymentForm.wage);
+  let wage = parseFloat(context.get.paymentForm.wage);
   let absence = 0;
   let justified = 0;
   const hourValue = wage / HOURS;
