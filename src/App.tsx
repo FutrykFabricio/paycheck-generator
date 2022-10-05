@@ -2,6 +2,8 @@ import Absence from "./components/Absence";
 import Button from "./components/Base/Button";
 import Input from "./components/Base/Input";
 import Header from "./components/Header";
+import PaycheckPDF from "./components/PDF/PaycheckPDF";
+import PrintPaycheck from "./components/PrintPaycheck";
 import Results from "./components/Results";
 import usePaycheck from "./hooks/usePaycheck";
 
@@ -88,7 +90,10 @@ const App = () => {
             <Results />
           </div>
         </div>
-        <Button>Generar Recibo de Sueldo</Button>
+        <PrintPaycheck
+          button={<Button>Generar Recibo de Sueldo</Button>}
+          content={<PaycheckPDF />}
+        />
       </div>
     </div>
   );
