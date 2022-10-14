@@ -9,7 +9,7 @@ const Header = () => {
       </div>
       <div className="flex w-full flex-row items-center gap-5 px-10">
         <div className="w-fit border-[1px] border-black p-2">
-          <img src={logo} height={100} width={100} />
+          <img src={logo} height={100} width={100} alt="" />
         </div>
         <div className="flex flex-col text-lg">
           <p>Empresa E.E.S.T. N°4</p>

@@ -20,7 +20,7 @@ const Footer = () => {
           firmado por el empleado.
         </div>
         <div className="flex w-1/4 flex-col items-center border-[1px] border-black border-l-transparent p-5 align-middle">
-          <img src={signature} height={100} width={100} />
+          <img src={signature} height={100} width={100} alt="" />
           <p>Firma del Empleador</p>
         </div>
       </div>
