@@ -117,7 +117,7 @@ const Results = () => {
           <ResultValue
             label="Aguinaldo"
             value={get.values.rawRemuneration / 2}
-            tooltip={`${get.values.rawRemuneration).toFixed(2)}$ / 2`}
+            tooltip={`${get.values.rawRemuneration.toFixed(2)}$ / 2`}
           />
         </div>
         <div className="my-4">
