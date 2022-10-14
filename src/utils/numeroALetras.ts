@@ -11,8 +11,8 @@ export const numeroALetras = (num: number) => {
   if (data.decimales > 0)
     data.letrasDecimales = ` CON ${Millones(data.decimales)} CENTAVOS`;
 
-  if (data.enteros == 0) return `CERO ${data.letrasDecimales}`;
-  if (data.enteros == 1) return Millones(data.enteros) + data.letrasDecimales;
+  if (data.enteros === 0) return `CERO ${data.letrasDecimales}`;
+  if (data.enteros === 1) return Millones(data.enteros) + data.letrasDecimales;
   else return Millones(data.enteros) + data.letrasDecimales;
 };
 
@@ -48,7 +48,7 @@ const Decenas = (num: number) => {
       };
       return aLetra[unidad] || "DIECI" + Unidades(unidad);
     })(),
-    2: unidad == 0 ? "VEINTE" : "VEINTI" + Unidades(unidad),
+    2: unidad === 0 ? "VEINTE" : "VEINTI" + Unidades(unidad),
     3: DecenasY("TREINTA", unidad),
     4: DecenasY("CUARENTA", unidad),
     5: DecenasY("CINCUENTA", unidad),
@@ -114,7 +114,7 @@ const Miles = (num: number) => {
   let strMiles = Seccion(num, divisor, "UN MIL", "MIL");
   let strCentenas = Centenas(resto);
 
-  if (strMiles == "") return strCentenas;
+  if (strMiles === "") return strCentenas;
   return strMiles + " " + strCentenas;
 }; //Miles()
 
@@ -126,6 +126,6 @@ const Millones = (num: number) => {
   let strMillones = Seccion(num, divisor, "UN MILLON", "MILLONES");
   let strMiles = Miles(resto);
 
-  if (strMillones == "") return strMiles;
+  if (strMillones === "") return strMiles;
   return strMillones + " " + strMiles;
 }; //Millones()
