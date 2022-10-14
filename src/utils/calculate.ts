@@ -31,7 +31,6 @@ const calculate = (context: IPaycheckContext) => {
   });
 
   wage -= absence;
-  wage += justified;
 
   const production = (wage * PRODUCTION) / 100;
   const presenteeism =
