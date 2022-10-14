@@ -113,6 +113,13 @@ const Results = () => {
             tooltip={""}
           />
         </div>
+        <div className="my-4 border-b-2 border-[#D3D3D3]">
+          <ResultValue
+            label="Aguinaldo"
+            value={get.values.rawRemuneration / 2}
+            tooltip={`${get.values.rawRemuneration).toFixed(2)}$ / 2`}
+          />
+        </div>
         <div className="my-4">
           <ResultValue
             label="Remuneracion Bruta"
