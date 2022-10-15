@@ -32,19 +32,34 @@ const calculate = (context: IPaycheckContext) => {
 
   wage -= absence;
 
+  const entryDate = new Date(context.get.paymentForm.entryDate);
   const production = (wage * PRODUCTION) / 100;
   const presenteeism =
     (wage *
       (DEFAULT_PRESENTEEISM - context.get.deductions.absents.length * 5)) /
     100;
-  const years =
-    today.getFullYear() -
-    new Date(context.get.paymentForm.entryDate).getFullYear();
+  const years = today.getFullYear() - entryDate.getFullYear();
   const seniority = (years * (wage * context.get.paymentForm.seniority)) / 100;
   const holidays = context.get.paymentForm.holidays * hourValue * 8;
   const extraHalf = hourValue * context.get.paymentForm.extraHalf * 1.5;
   const extraFull = hourValue * context.get.paymentForm.extraFull * 2;
 
+  const lastDay = new Date(`12/31/${today.getFullYear()}`);
+  const timeDifference = lastDay.getTime() - entryDate.getTime();
+  const days = Math.floor(timeDifference / (1000 * 3600 * 24));
+  const months = Math.floor(days / 30.5);
+  let paidHolidaysAmount = context.get.values.paidHolidaysAmount;
+
+  if (months <= 6) paidHolidaysAmount = Math.floor(days / 20);
+  else if (months <= 5 * 12) paidHolidaysAmount = 14;
+  else if (months <= 10 * 12) paidHolidaysAmount = 28;
+  else if (months <= 20 * 12) paidHolidaysAmount = 35;
+
+  const paidHolidays =
+    (parseFloat(context.get.paymentForm.wage) / 22) *
+    0.1 *
+    0.25 *
+    paidHolidaysAmount;
   const rawRemuneration =
     wage +
     production +
@@ -74,6 +89,8 @@ const calculate = (context: IPaycheckContext) => {
     justified,
     rawRemuneration,
     netRemuneration,
+    paidHolidays,
+    paidHolidaysAmount,
   });
   context.set.deductions({
     ...context.get.deductions,

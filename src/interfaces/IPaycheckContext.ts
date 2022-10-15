@@ -19,6 +19,8 @@ export interface IPaycheckContext {
 
 export interface IValues {
   wage: number;
+  paidHolidays: number;
+  paidHolidaysAmount: number;
   production: number;
   presenteeism: number;
   extraHalf: number;
