@@ -55,11 +55,9 @@ const calculate = (context: IPaycheckContext) => {
   else if (months <= 10 * 12) paidHolidaysAmount = 28;
   else if (months <= 20 * 12) paidHolidaysAmount = 35;
 
+  const workDayWage = parseFloat(context.get.paymentForm.wage) / 22;
   const paidHolidays =
-    (parseFloat(context.get.paymentForm.wage) / 22) *
-    1.1 *
-    1.25 *
-    paidHolidaysAmount;
+    (workDayWage + workDayWage * 1.1 + workDayWage * 1.25) * paidHolidaysAmount;
   const rawRemuneration =
     wage +
     production +

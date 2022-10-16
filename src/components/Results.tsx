@@ -122,7 +122,7 @@ const Results = () => {
           <ResultValue
             label="Vacaciones"
             value={get.values.paidHolidays}
-            tooltip={`(${get.paymentForm.wage}$ / 22) * 1.1 * 1.25 * ${get.values.paidHolidaysAmount}`}
+            tooltip={`(${get.paymentForm.wage}$ / 22) + 10% + 25% * ${get.values.paidHolidaysAmount}`}
           />
         </div>
         <div className="my-4">
