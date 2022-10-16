@@ -57,8 +57,8 @@ const calculate = (context: IPaycheckContext) => {
 
   const paidHolidays =
     (parseFloat(context.get.paymentForm.wage) / 22) *
-    0.1 *
-    0.25 *
+    1.1 *
+    1.25 *
     paidHolidaysAmount;
   const rawRemuneration =
     wage +
