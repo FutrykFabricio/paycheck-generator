@@ -6,7 +6,6 @@ import {
   SIPA,
   SOCIAL_WORK,
 } from "../constants";
-import { IAbsence } from "../interfaces/IAbsence";
 import { IPaycheckContext } from "../interfaces/IPaycheckContext";
 
 const calculate = (context: IPaycheckContext) => {
@@ -14,23 +13,16 @@ const calculate = (context: IPaycheckContext) => {
   let wage = parseFloat(context.get.paymentForm.wage);
   let absence = 0;
   let justified = 0;
-  const hourValue = wage / HOURS;
+  const justifiedAbsents = context.get.deductions.absents.filter(
+    (value) => value.justified
+  );
+  const absents = context.get.deductions.absents.filter(
+    (value) => !value.justified
+  );
 
-  context.get.deductions.absents.forEach((absent: IAbsence) => {
-    if (absent.date.getDay() === 6) return;
+  const hourValue = wage / (HOURS - justifiedAbsents.length - absents.length);
 
-    if (absent.date.getDay() === 5) {
-      if (absent.justified) justified += hourValue * 4;
-
-      absence += hourValue * 4;
-    } else {
-      if (absent.justified) justified += hourValue * 8;
-
-      absence += hourValue * 8;
-    }
-  });
-
-  wage -= absence;
+  console.log(hourValue);
 
   const entryDate = new Date(context.get.paymentForm.entryDate);
   const production = (wage * PRODUCTION) / 100;
@@ -57,7 +49,7 @@ const calculate = (context: IPaycheckContext) => {
 
   const workDayWage = parseFloat(context.get.paymentForm.wage) / 22;
   const paidHolidays =
-    (workDayWage + workDayWage * 1.1 + workDayWage * 1.25) * paidHolidaysAmount;
+    (workDayWage + workDayWage * 0.1 + workDayWage * 0.25) * paidHolidaysAmount;
   const rawRemuneration =
     wage +
     production +
