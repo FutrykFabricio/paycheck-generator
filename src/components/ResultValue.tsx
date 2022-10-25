@@ -1,5 +1,4 @@
 import { FC } from "react";
-import Tooltip from "./Tooltip";
 
 interface ResultValueProps {
   label: string;
@@ -13,31 +12,15 @@ const intl = new Intl.NumberFormat("es-ES", {
   currency: "ARS",
 });
 
-const ResultValue: FC<ResultValueProps> = ({
-  label,
-  value,
-  percentage,
-  tooltip,
-}) => {
+const ResultValue: FC<ResultValueProps> = ({ label, value, percentage }) => {
   return (
     <div className="flex flex-row justify-between text-default">
-      {tooltip ? (
-        <Tooltip tooltipContent={tooltip}>
-          <p className="text-base font-bold">
-            {label}
-            {percentage && (
-              <span className="text-xs font-normal">({percentage}%)</span>
-            )}
-          </p>
-        </Tooltip>
-      ) : (
-        <p className="text-base font-bold">
-          {label}
-          {percentage && (
-            <span className="text-xs font-normal">({percentage}%)</span>
-          )}
-        </p>
-      )}
+      <p className="text-base font-bold">
+        {label}
+        {percentage && (
+          <span className="text-xs font-normal">({percentage}%)</span>
+        )}
+      </p>
       <p className="text-lg font-thin">${intl.format(value)}</p>
     </div>
   );
