@@ -16,11 +16,6 @@ const calculate = (context: IPaycheckContext) => {
   let workedHours = HOURS;
   const getHourValue = () => wage / workedHours;
 
-  console.log(
-    context.get.deductions.absents.length > 0
-      ? context.get.deductions.absents[0].date.getDay()
-      : "Nada"
-  );
   const weekdayAbsent = context.get.deductions.absents.filter(
     (absence: IAbsence) =>
       absence.date.getDay() !== 6 && absence.date.getDay() !== 5
@@ -61,11 +56,13 @@ const calculate = (context: IPaycheckContext) => {
   const days = Math.floor(timeDifference / (1000 * 3600 * 24));
   const months = Math.floor(days / 30.5);
   let paidHolidaysAmount = context.get.values.paidHolidaysAmount;
+  const years = Math.floor(months / 12);
 
-  if (months < 6) paidHolidaysAmount = Math.floor(days / 20);
-  else if (months <= 5 * 12) paidHolidaysAmount = 14;
-  else if (months <= 10 * 12) paidHolidaysAmount = 28;
-  else if (months <= 20 * 12) paidHolidaysAmount = 35;
+  if (years < 1 && months < 6) paidHolidaysAmount = Math.floor(days / 20);
+  else if (years <= 5) paidHolidaysAmount = 14;
+  else if (years > 5 && years <= 10) paidHolidaysAmount = 21;
+  else if (years > 10 && years <= 20) paidHolidaysAmount = 28;
+  else if (years > 20) paidHolidaysAmount = 35;
 
   const seniority =
     (Math.round(months / 12) * (wage * context.get.paymentForm.seniority)) /
@@ -87,8 +84,8 @@ const calculate = (context: IPaycheckContext) => {
   context.set.values({
     ...context.get.values,
     wage,
-    production: production,
-    presenteeism: presenteeism,
+    production,
+    presenteeism,
     seniority,
     holidays,
     extraHalf,
