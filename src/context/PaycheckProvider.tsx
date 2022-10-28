@@ -49,6 +49,7 @@ const PaycheckProvider: FC<PropsWithChildren> = ({ children }) => {
     justified: 0,
     paidHolidays: 0,
     paidHolidaysAmount: 0,
+    showPaidHolidays: false;
   });
   const [deductions, setDeductions] = useState<IDeductions>({
     absents: [],
