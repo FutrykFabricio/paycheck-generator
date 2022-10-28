@@ -3,7 +3,7 @@ import { FC } from "react";
 interface ResultValueProps {
   label: string;
   value: number;
-  percentage?: string;
+  info?: string;
   tooltip?: string;
 }
 
@@ -12,14 +12,12 @@ const intl = new Intl.NumberFormat("es-ES", {
   currency: "ARS",
 });
 
-const ResultValue: FC<ResultValueProps> = ({ label, value, percentage }) => {
+const ResultValue: FC<ResultValueProps> = ({ label, value, info }) => {
   return (
     <div className="flex flex-row justify-between text-default">
       <p className="text-base font-bold">
         {label}
-        {percentage && (
-          <span className="text-xs font-normal">({percentage}%)</span>
-        )}
+        {info && <span className="text-xs font-normal">{info}</span>}
       </p>
       <p className="text-lg font-thin">${intl.format(value)}</p>
     </div>
