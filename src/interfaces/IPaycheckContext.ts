@@ -31,6 +31,7 @@ export interface IValues {
   netRemuneration: number;
   deductions: number;
   justified: number;
+  showPaidHolidays?: boolean;
 }
 
 export interface IDeductions {
